@@ -142,6 +142,11 @@ class Bomb:
 
 class Score:
     def __init__(self,):
+        """
+        class : スコアの設定
+        引数 point ： 爆弾を消滅させた数
+        戻り値 : なし
+        """
         self.point = 0
         self.font = pg.font.SysFont("hgp創英角ポップ体", 30)
         self.img = self.font.render("スコア：", 0, (0, 0, 255))
@@ -149,6 +154,10 @@ class Score:
         self.rct.center = (100, 600) 
     
     def update(self, screen: pg.Surface):
+        """
+        スコアをpointに基づき増加させる
+        引数 screen：画面Surface
+        """
         self.font = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体", 30)
         self.img = self.font.render(f"スコア：{self.point}", 0, (0, 0, 255))
         screen.blit(self.img, self.rct)
@@ -166,6 +175,7 @@ def main():
     # bomb = Bomb((255, 0, 0), 10)
     bombs = [Bomb((255, 0, 0), 10) for _ in range(NUM_OF_BOMBS)]
     score = Score()
+    beams = []
     clock = pg.time.Clock()
     tmr = 0
     while True:
@@ -201,6 +211,10 @@ def main():
             bombs = [bomb for bomb in bombs if bomb is not None]  # 撃ち落とされてない爆弾だけのリストにする
 
         key_lst = pg.key.get_pressed()
+        # for a in range(key_lst):
+        #     beams = Beam()
+        #     beams.append
+        
         bird.update(key_lst, screen)
         if beam is not None:
             beam.update(screen)
