@@ -142,6 +142,9 @@ class Bomb:
 
 class Score:
     def __init__(self,):
+        """
+        point : 爆弾を消滅させた数
+        """
         self.point = 0
         self.font = pg.font.SysFont("hgp創英角ポップ体", 30)
         self.img = self.font.render("スコア：", 0, (0, 0, 255))
@@ -149,6 +152,10 @@ class Score:
         self.rct.center = (100, 600) 
     
     def update(self, screen: pg.Surface):
+        """
+        スコアをpointに基づき増加させる
+        引数 screen：画面Surface
+        """
         self.font = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体", 30)
         self.img = self.font.render(f"スコア：{self.point}", 0, (0, 0, 255))
         screen.blit(self.img, self.rct)
